@@ -444,7 +444,7 @@ Word16 cod_amr_reset(cod_amrState *st)
     oscl_memset(st->mem_w0,  0,    sizeof(Word16)*M);
     oscl_memset(st->mem_err, 0,    sizeof(Word16)*M);
     oscl_memset(st->zero, 0,       sizeof(Word16)*L_SUBFR);
-    oscl_memset(st->hvec, 0,       sizeof(Word16)*L_SUBFR);    /* set to zero "h1[-L_SUBFR..-1]" */
+    oscl_memset(st->hvec, 0,       sizeof(Word16)*L_SUBFR*2);    /* set to zero "h1[-L_SUBFR..-1]" */
 
     /* OL LTP states */
     for (i = 0; i < 5; i++)
@@ -1221,7 +1221,7 @@ Word16 cod_amr(
         oscl_memset(st->mem_w0,  0,   sizeof(Word16)*M);
         oscl_memset(st->mem_err, 0,   sizeof(Word16)*M);
         oscl_memset(st->zero,    0,   sizeof(Word16)*L_SUBFR);
-        oscl_memset(st->hvec,    0,   sizeof(Word16)*L_SUBFR);    /* set to zero "h1[-L_SUBFR..-1]" */
+        oscl_memset(st->hvec,    0,   sizeof(Word16)*L_SUBFR*2);    /* set to zero "h1[-L_SUBFR..-1]" */
         /* Reset lsp states */
         lsp_reset(st->lspSt);
 
