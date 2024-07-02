@@ -94,7 +94,7 @@ extern "C"
         int16 decAnaElapsedCount;
         int32 D[28];
         int32 sumD[DTX_HIST_SIZE];
-    } dtxwb_encState;
+    } dtx_encState;
 
 #define SPEECH 0
 #define DTX 1
@@ -149,27 +149,27 @@ extern "C"
         int16 dither_seed;
         int16 CN_dith;
 
-    } dtxwb_decState;
+    } dtx_decState;
 
-    int16 dtx_enc_init(dtxwb_encState ** st, int16 isf_init[]);
-    int16 dtx_enc_reset(dtxwb_encState * st, int16 isf_init[]);
-    void dtx_enc_exit(dtxwb_encState ** st);
+    int16 dtx_enc_init(dtx_encState ** st, int16 isf_init[]);
+    int16 dtx_enc_reset(dtx_encState * st, int16 isf_init[]);
+    void dtx_enc_exit(dtx_encState ** st);
 
     int16 dtx_enc(
-        dtxwb_encState * st,                 /* i/o : State struct                                         */
+        dtx_encState * st,                    /* i/o : State struct                                         */
         int16 isf[M],                        /* o   : CN ISF vector                                        */
         int16 * exc2,                        /* o   : CN excitation                                        */
         int16 ** prms
     );
 
     int16 dtx_buffer(
-        dtxwb_encState * st,                 /* i/o : State struct                    */
+        dtx_encState * st,                    /* i/o : State struct                    */
         int16 isf_new[],                     /* i   : isf vector                      */
         int32 enr,                           /* i   : residual energy (in L_FRAME)    */
         int16 codec_mode
     );
 
-    void tx_dtx_handler(dtxwb_encState * st,                 /* i/o : State struct           */
+    void tx_dtx_handler(dtx_encState * st,     /* i/o : State struct           */
                         int16 vad_flag,                      /* i   : vad decision           */
                         int16 * usedMode                     /* i/o : mode changed or not    */
                        );
@@ -181,10 +181,10 @@ extern "C"
     );
 
 
-    int16 dtx_dec_amr_wb_reset(dtxwb_decState * st, const int16 isf_init[]);
+    int16 dtx_dec_amr_wb_reset(dtx_decState * st, const int16 isf_init[]);
 
     int16 dtx_dec_amr_wb(
-        dtxwb_decState * st,                 /* i/o : State struct                                          */
+        dtx_decState * st,                    /* i/o : State struct                                          */
         int16 * exc2,                        /* o   : CN excitation                                          */
         int16 new_state,                     /* i   : New DTX state                                          */
         int16 isf[],                         /* o   : CN ISF vector                                          */
@@ -192,13 +192,13 @@ extern "C"
     );
 
     void dtx_dec_amr_wb_activity_update(
-        dtxwb_decState * st,
+        dtx_decState * st,
         int16 isf[],
         int16 exc[]);
 
 
     int16 rx_amr_wb_dtx_handler(
-        dtxwb_decState * st,                 /* i/o : State struct     */
+        dtx_decState * st,                    /* i/o : State struct     */
         int16 frame_type                     /* i   : Frame type       */
     );
 
@@ -215,11 +215,11 @@ extern "C"
     void find_frame_indices(
         int16 isf_old_tx[],
         int16 indices[],
-        dtxwb_encState * st
+        dtx_encState * st
     );
 
     int16 dithering_control(
-        dtxwb_encState * st
+        dtx_encState * st
     );
     void CN_dithering(
         int16 isf[M],
