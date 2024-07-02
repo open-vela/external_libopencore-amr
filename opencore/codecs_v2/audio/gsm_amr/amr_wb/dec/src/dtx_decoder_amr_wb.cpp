@@ -106,12 +106,12 @@ terms listed above has been obtained from the copyright holder.
 /*
  * Function    : dtx_dec_amr_wb_reset
  */
-int16 dtx_dec_amr_wb_reset(dtxwb_decState * st, const int16 isf_init[])
+int16 dtx_dec_amr_wb_reset(dtx_decState * st, const int16 isf_init[])
 {
     int16 i;
 
 
-    if (st == (dtxwb_decState *) NULL)
+    if (st == (dtx_decState *) NULL)
     {
         /* dtx_dec_amr_wb_reset invalid parameter */
         return (-1);
@@ -186,7 +186,7 @@ int16 dtx_dec_amr_wb_reset(dtxwb_decState * st, const int16 isf_init[])
  * Function    : dtx_dec_amr_wb
  */
 int16 dtx_dec_amr_wb(
-    dtxwb_decState * st,                 /* i/o : State struct         */
+    dtx_decState * st,                    /* i/o : State struct         */
     int16 * exc2,                        /* o   : CN excitation        */
     int16 new_state,                     /* i   : New DTX state        */
     int16 isf[],                         /* o   : CN ISF vector        */
@@ -453,7 +453,7 @@ int16 dtx_dec_amr_wb(
 ----------------------------------------------------------------------------*/
 
 void dtx_dec_amr_wb_activity_update(
-    dtxwb_decState * st,
+    dtx_decState * st,
     int16 isf[],
     int16 exc[])
 {
@@ -526,7 +526,7 @@ void dtx_dec_amr_wb_activity_update(
 ----------------------------------------------------------------------------*/
 
 int16 rx_amr_wb_dtx_handler(
-    dtxwb_decState * st,                 /* i/o : State struct     */
+    dtx_decState * st,                    /* i/o : State struct     */
     int16 frame_type                     /* i   : Frame type       */
 )
 {
@@ -719,7 +719,7 @@ void aver_isf_history(
 void find_frame_indices(
     int16 isf_old_tx[],
     int16 indices[],
-    dtxwb_encState * st
+    dtx_encState * st
 )
 {
     int32 L_tmp, summin, summax, summax2nd;
@@ -864,7 +864,7 @@ void find_frame_indices(
 ; FUNCTION CODE
 ----------------------------------------------------------------------------*/
 
-int16 dithering_control(dtxwb_encState * st)
+int16 dithering_control(dtx_encState * st)
 {
     int16 i, tmp, mean, CN_dith, gain_diff;
     int32 ISF_diff;

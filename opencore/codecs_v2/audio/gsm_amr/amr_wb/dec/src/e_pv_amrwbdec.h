@@ -106,7 +106,7 @@ typedef struct
     int16 prev_bfi;
     int16 state;
     int16 first_frame;
-    dtxwb_decState dtx_decSt;
+    dtx_decState dtx_decSt;
     int16 vad_hist;
 
 } Decoder_State;
