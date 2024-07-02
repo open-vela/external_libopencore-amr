@@ -81,6 +81,9 @@ extern "C"
 #define GAIN_THR 180
 #define GAIN_FACTOR 75
 
+#define dtx_encState dtxwb_encState
+#define dtx_decState dtxwb_decState
+
     typedef struct
     {
         int16 isf_hist[M * DTX_HIST_SIZE];
